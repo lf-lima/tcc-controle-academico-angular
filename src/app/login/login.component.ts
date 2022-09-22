@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core'
+import { Router } from '@angular/router'
+import { AuthService } from 'src/app/shared/services/auth.service'
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  @Output()
+  documentNumber = new EventEmitter<string>()
 
-  ngOnInit(): void {
+  @Output()
+  password = new EventEmitter<string>()
+
+  constructor (
+    private authService: AuthService,
+    private router: Router
+  ) { }
+
+  ngOnInit (): void {
   }
 
+  login (documentNumber: string, password: string) {
+    this.authService.authenticate(documentNumber, password).subscribe((res) => {
+      this.router.navigate(['/dashboard'])
+    })
+  }
 }

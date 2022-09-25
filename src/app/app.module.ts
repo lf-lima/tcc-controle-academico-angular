@@ -5,16 +5,16 @@ import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { LoginComponent } from './login/login.component'
-import { SharedModule } from 'src/app/shared/shared.module';
-import { TestingComponent } from './testing/testing.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { SharedModule } from 'src/app/shared/shared.module'
+import { SidebarComponent } from './sidebar/sidebar.component'
+import { HomeComponent } from './home/home.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    TestingComponent,
-    SidebarComponent
+    SidebarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

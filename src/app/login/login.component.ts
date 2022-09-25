@@ -30,14 +30,14 @@ export class LoginComponent implements OnInit {
     const token = this.tokenService.getToken()
 
     if (token) {
-      this.router.navigate(['/testing'])
+      this.router.navigate(['/home'])
     }
   }
 
   login () {
     const { documentNumber, password } = this.loginForm.value
     this.authService.authenticate(documentNumber!, password!).subscribe((res) => {
-      this.router.navigate(['/testing'])
+      this.router.navigate(['/home'])
     })
   }
 }

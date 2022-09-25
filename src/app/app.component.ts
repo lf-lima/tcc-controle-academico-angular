@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import { TokenService } from 'src/app/shared/services/token.service'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  constructor (
+    private tokenService: TokenService
+  ) {}
+
   title = 'tcc-controle-academico-angular';
+
+  checkIfAuthenticated () {
+    const token = this.tokenService.getToken()
+    return !!token
+  }
 }

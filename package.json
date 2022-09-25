@@ -6,7 +6,8 @@
     "start": "node server.js",
     "build": "ng build --aot --source-map",
     "watch": "ng build --watch --configuration development",
-    "heroku-postbuild": "ng build --aot --source-map"
+    "heroku-postbuild": "ng build --aot --source-map",
+    "new-component": "ng generate component"
   },
   "private": true,
   "dependencies": {

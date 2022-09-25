@@ -6,13 +6,15 @@ import { AppComponent } from './app.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { LoginComponent } from './login/login.component'
 import { SharedModule } from 'src/app/shared/shared.module';
-import { DashboardComponent } from './dashboard/dashboard.component'
+import { TestingComponent } from './testing/testing.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    TestingComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

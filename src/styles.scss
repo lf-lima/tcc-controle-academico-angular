@@ -1,4 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+$background-color-hover: #0B5ED7;
+$text-color: rgba(255, 255, 255, 0.777);
+$text-color-hover: rgba(0, 0, 0, 0.637);
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  min-height: 100vh;
+  height: 100%;
+  min-height: -webkit-fill-available;
+}
+
+html {
+  height: -webkit-fill-available;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

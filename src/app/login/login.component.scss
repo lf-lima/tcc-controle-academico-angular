@@ -1,4 +1,7 @@
+@import '../../styles.scss';
+
 .login-card {
+  color: $text-color;
   display: flex;
   align-items: center;
   height: 100%;

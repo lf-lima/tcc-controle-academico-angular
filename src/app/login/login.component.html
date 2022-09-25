@@ -1,5 +1,5 @@
 <div class="login-card">
-  <div class="card" style="width: 50vh;height: 30vh;">
+  <div class="card bg-dark" style="min-width: 50vh;min-height: 30vh;">
     <div class="card-body">
       <div>
         <h5 class="card-title text-center mt-2">Faça seu login</h5>
@@ -14,11 +14,9 @@
             <label for="password" class="form-label">Senha</label>
             <input #password type="password" class="form-control" id="password">
           </div>
-          <div class="row mt-1 d-flex justify-content-center">
-            <div class="col-6">
-              <button (click)="login(documentNumber.value, password.value)"
-                class="btn btn-primary w-100">Continuar</button>
-            </div>
+          <div class="mt-4 d-flex justify-content-center">
+            <button (click)="login(documentNumber.value, password.value)"
+              class="btn btn-primary w-100">Continuar</button>
           </div>
         </form>
       </div>

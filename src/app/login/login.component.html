@@ -5,18 +5,17 @@
         <h5 class="card-title text-center mt-2">Faça seu login</h5>
       </div>
       <div>
-        <form>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
           <div class="mb-3">
             <label for="documentNumber" class="form-label">CPF / CNPJ</label>
-            <input #documentNumber type="documentNumber" class="form-control" id="documentNumber">
+            <input formControlName="documentNumber" #documentNumber type="documentNumber" class="form-control" id="documentNumber">
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Senha</label>
-            <input #password type="password" class="form-control" id="password">
+            <input formControlName="password" #password type="password" class="form-control" id="password">
           </div>
           <div class="mt-4 d-flex justify-content-center">
-            <button (click)="login(documentNumber.value, password.value)"
-              class="btn btn-primary w-100">Continuar</button>
+            <button type="submit" class="btn btn-primary w-100">Continuar</button>
           </div>
         </form>
       </div>

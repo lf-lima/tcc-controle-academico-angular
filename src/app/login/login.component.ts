@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core'
+import { FormControl, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router'
 import { AuthService } from 'src/app/shared/services/auth.service'
 import { TokenService } from 'src/app/shared/services/token.service'
@@ -10,11 +11,10 @@ import { TokenService } from 'src/app/shared/services/token.service'
 })
 export class LoginComponent implements OnInit {
 
-  @Output()
-  documentNumber = new EventEmitter<string>()
-
-  @Output()
-  password = new EventEmitter<string>()
+  loginForm = new FormGroup({
+    documentNumber: new FormControl(''),
+    password: new FormControl('')
+  })
 
   constructor (
     private authService: AuthService,
@@ -34,8 +34,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login (documentNumber: string, password: string) {
-    this.authService.authenticate(documentNumber, password).subscribe((res) => {
+  login () {
+    const { documentNumber, password } = this.loginForm.value
+    this.authService.authenticate(documentNumber!, password!).subscribe((res) => {
       this.router.navigate(['/testing'])
     })
   }

@@ -12,6 +12,8 @@ export class SidebarComponent implements OnInit {
     private authService: AuthService
   ) { }
 
+  count = 0
+
   ngOnInit (): void {
   }
 

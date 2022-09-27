@@ -25,6 +25,22 @@ export class NewInstitutionComponent implements OnInit {
   }
 
   onSubmit () {
-    this.institutionService.create(this.newInstitutionForm.value as NewInstitutionInputDto).subscribe()
+    this.institutionService.create(this.newInstitutionForm.value as NewInstitutionInputDto).subscribe(
+      {
+        next: (response) => {
+          alert('Instituição criada com sucesso!')
+          this.newInstitutionForm.reset()
+        },
+        error: ({ error: responseError }) => {
+          const body = responseError.body
+
+          for (const error of body) {
+            for (const errorMessage of error.messages) {
+              alert(errorMessage)
+            }
+          }
+        }
+      }
+    )
   }
 }

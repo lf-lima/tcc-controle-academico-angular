@@ -3,6 +3,7 @@
     <a href="/" class="d-flex align-items-center pb-3 mb-3 text-decoration-none border-bottom">
       <span class="fs-5 fw-semibold">Controle Acadêmico</span>
     </a>
+    <p class="hello-text">Ola Professor Luiz!</p>
     <ul class="list-unstyled ps-0">
       <li class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
@@ -35,7 +36,7 @@
         </button>
         <div class="collapse" id="professors-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="d-inline-flex text-decoration-none rounded">Novo Professor</a></li>
+            <li><a [routerLink]="['/professor/new']" class="d-inline-flex text-decoration-none rounded">Novo Professor</a></li>
           </ul>
         </div>
       </li>

@@ -1,5 +1,9 @@
 @import '../../styles.scss';
 
+.hello-text {
+  color: $text-color
+}
+
 .sidebar {
   height: 100vh;
   height: -webkit-fill-available;

@@ -1,7 +1,6 @@
-export interface IInstitution {
+export interface IProfessor {
   id: number
   name: string
   documentNumber: string
   about: string
-  password: string
 }

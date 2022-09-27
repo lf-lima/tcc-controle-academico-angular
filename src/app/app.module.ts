@@ -8,7 +8,8 @@ import { LoginComponent } from './login/login.component'
 import { SharedModule } from 'src/app/shared/shared.module'
 import { SidebarComponent } from './sidebar/sidebar.component'
 import { HomeComponent } from './home/home.component';
-import { NewInstitutionComponent } from './new-institution/new-institution.component'
+import { NewInstitutionComponent } from './new-institution/new-institution.component';
+import { NewProfessorComponent } from './new-professor/new-professor.component'
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NewInstitutionComponent } from './new-institution/new-institution.compo
     LoginComponent,
     SidebarComponent,
     HomeComponent,
-    NewInstitutionComponent
+    NewInstitutionComponent,
+    NewProfessorComponent
   ],
   imports: [
     BrowserModule,

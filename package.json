@@ -4,10 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
+    "start:dev": "ng serve",
     "build": "ng build --aot --source-map",
     "watch": "ng build --watch --configuration development",
     "heroku-postbuild": "ng build --aot --source-map",
-    "new-component": "ng generate component"
+    "new:component": "ng generate component"
   },
   "private": true,
   "dependencies": {

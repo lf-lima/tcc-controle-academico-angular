@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { environment } from '../../../environments/environment'
+import { NewInstitutionInputDto } from 'src/app/shared/dtos/institution/newInstitutionDto'
 
 @Injectable({ providedIn: 'root' })
 export class InstitutionService {
@@ -8,17 +9,10 @@ export class InstitutionService {
     private httpClient: HttpClient
   ) {}
 
-  create () {
+  create (input: NewInstitutionInputDto) {
     return this.httpClient.post(
       `${environment.baseUrl}/institution`,
-      {
-        "name": "UniFodase2",
-        "about": "Uma merda",
-        "documentNumber": "6666661234",
-        "test": "1234",
-        "password": "puredebatata",
-        "confirmPassword": "puredebatata"
-      }
+      input
     )
   }
 }

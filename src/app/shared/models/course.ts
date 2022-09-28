@@ -1,4 +1,4 @@
-export interface Institution {
+export interface Course {
   id: number
   name: string
   documentNumber: string

@@ -1,0 +1,26 @@
+<div class="h-100 d-flex justify-content-center align-items-center">
+  <div class="w-100">
+    <h1 class="text-center mb-4">Novo Curso</h1>
+    <div class="row d-flex justify-content-center">
+      <div class="col-8">
+        <form [formGroup]="newCourseForm" (ngSubmit)="onSubmit()">
+          <div class="row mt-4">
+            <div class="col-12">
+              <label for="courseName" class="form-label">Nome</label>
+              <input formControlName="courseName" #name type="text" class="form-control" id="courseName">
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-12">
+              <label for="courseDescription" class="form-label">Sobre o Curso</label>
+              <textarea formControlName="courseDescription" #name type="text" class="form-control" id="courseDescription" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="mt-4 d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

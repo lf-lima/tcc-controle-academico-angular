@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { HomeComponent } from 'src/app/home/home.component'
 import { LoginComponent } from 'src/app/login/login.component'
+import { NewCourseComponent } from 'src/app/new-course/new-course.component'
 import { NewInstitutionComponent } from 'src/app/new-institution/new-institution.component'
 import { NewProfessorComponent } from 'src/app/new-professor/new-professor.component'
 import { NewStudentComponent } from 'src/app/new-student/new-student.component'
@@ -46,6 +47,15 @@ const routes: Routes = [
       {
         path: 'new',
         component: NewStudentComponent
+      }
+    ]
+  },
+  {
+    path: 'course',
+    children: [
+      {
+        path: 'new',
+        component: NewCourseComponent
       }
     ]
   }

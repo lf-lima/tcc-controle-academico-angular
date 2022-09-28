@@ -1,4 +1,4 @@
-export interface IProfessor {
+export interface IStudent {
   id: number
   name: string
   documentNumber: string

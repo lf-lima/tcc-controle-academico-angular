@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
 import { NewInstitutionInputDto } from 'src/app/shared/dtos/institution/newInstitutionDto'
 import { InstitutionService } from 'src/app/shared/services/institution.service'
+import { catchErrorFunction } from 'src/app/shared/utils/catchErrorFunction'
 
 @Component({
   selector: 'app-new-institution',
@@ -31,15 +32,7 @@ export class NewInstitutionComponent implements OnInit {
           alert('Instituição criada com sucesso!')
           this.newInstitutionForm.reset()
         },
-        error: ({ error: responseError }) => {
-          const body = responseError.body
-
-          for (const error of body) {
-            for (const errorMessage of error.messages) {
-              alert(errorMessage)
-            }
-          }
-        }
+        error: catchErrorFunction
       }
     )
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms'
 import { NewProfessorInputDto } from 'src/app/shared/dtos/professor/newProfessorDto'
 import { ProfessorService } from 'src/app/shared/services/professor.service'
+import { catchErrorFunction } from 'src/app/shared/utils/catchErrorFunction'
 
 @Component({
   selector: 'app-new-professor',
@@ -31,15 +32,7 @@ export class NewProfessorComponent implements OnInit {
           alert('Professor criado com sucesso!')
           this.newProfessorForm.reset()
         },
-        error: ({ error: responseError }) => {
-          const body = responseError.body
-
-          for (const error of body) {
-            for (const errorMessage of error.messages) {
-              alert(errorMessage)
-            }
-          }
-        }
+        error: catchErrorFunction
       }
     )
   }

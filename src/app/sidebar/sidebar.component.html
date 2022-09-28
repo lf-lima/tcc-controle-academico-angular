@@ -47,7 +47,29 @@
         </button>
         <div class="collapse" id="students-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="d-inline-flex text-decoration-none rounded">Novo Aluno</a></li>
+            <li><a [routerLink]="['/student/new']" class="d-inline-flex text-decoration-none rounded">Novo Aluno</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+          data-bs-toggle="collapse" data-bs-target="#students-collapse" aria-expanded="false">
+          Cursos
+        </button>
+        <div class="collapse" id="students-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a [routerLink]="['/course/new']" class="d-inline-flex text-decoration-none rounded">Novo Curso</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+          data-bs-toggle="collapse" data-bs-target="#students-collapse" aria-expanded="false">
+          Matérias
+        </button>
+        <div class="collapse" id="students-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a [routerLink]="['/subject/new']" class="d-inline-flex text-decoration-none rounded">Nova Matéria</a></li>
           </ul>
         </div>
       </li>

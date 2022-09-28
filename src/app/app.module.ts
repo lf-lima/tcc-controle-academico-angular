@@ -9,7 +9,8 @@ import { SharedModule } from 'src/app/shared/shared.module'
 import { SidebarComponent } from './sidebar/sidebar.component'
 import { HomeComponent } from './home/home.component';
 import { NewInstitutionComponent } from './new-institution/new-institution.component';
-import { NewProfessorComponent } from './new-professor/new-professor.component'
+import { NewProfessorComponent } from './new-professor/new-professor.component';
+import { NewStudentComponent } from './new-student/new-student.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NewProfessorComponent } from './new-professor/new-professor.component'
     SidebarComponent,
     HomeComponent,
     NewInstitutionComponent,
-    NewProfessorComponent
+    NewProfessorComponent,
+    NewStudentComponent
   ],
   imports: [
     BrowserModule,

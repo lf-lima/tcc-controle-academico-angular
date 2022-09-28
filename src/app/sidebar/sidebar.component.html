@@ -25,7 +25,8 @@
         </button>
         <div class="collapse" id="institutions-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a [routerLink]="['/institution/new']" class="d-inline-flex text-decoration-none rounded">Nova Instituição</a></li>
+            <li><a [routerLink]="['/institution/new']" class="d-inline-flex text-decoration-none rounded">Nova
+                Instituição</a></li>
           </ul>
         </div>
       </li>
@@ -36,7 +37,8 @@
         </button>
         <div class="collapse" id="professors-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a [routerLink]="['/professor/new']" class="d-inline-flex text-decoration-none rounded">Novo Professor</a></li>
+            <li><a [routerLink]="['/professor/new']" class="d-inline-flex text-decoration-none rounded">Novo
+                Professor</a></li>
           </ul>
         </div>
       </li>
@@ -47,7 +49,8 @@
         </button>
         <div class="collapse" id="students-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a [routerLink]="['/student/new']" class="d-inline-flex text-decoration-none rounded">Novo Aluno</a></li>
+            <li><a [routerLink]="['/student/new']" class="d-inline-flex text-decoration-none rounded">Novo Aluno</a>
+            </li>
           </ul>
         </div>
       </li>
@@ -69,7 +72,8 @@
         </button>
         <div class="collapse" id="subjects-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a [routerLink]="['/subject/new']" class="d-inline-flex text-decoration-none rounded">Nova Matéria</a></li>
+            <li><a *ngIf="checkHasPermission('createSubject')" [routerLink]="['/subject/new']"
+                class="d-inline-flex text-decoration-none rounded">Nova Matéria</a></li>
           </ul>
         </div>
       </li>

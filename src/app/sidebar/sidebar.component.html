@@ -21,7 +21,7 @@
           </ul>
         </div>
       </li>
-      <li class="mb-1">
+      <li *ngIf="isAdmin" class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
           data-bs-toggle="collapse" data-bs-target="#institutions-collapse" aria-expanded="false">
           Instituições
@@ -33,7 +33,7 @@
           </ul>
         </div>
       </li>
-      <li class="mb-1">
+      <li *ngIf="isAdmin || isInstitution" class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
           data-bs-toggle="collapse" data-bs-target="#professors-collapse" aria-expanded="false">
           Professores
@@ -45,7 +45,7 @@
           </ul>
         </div>
       </li>
-      <li class="mb-1">
+      <li *ngIf="isAdmin || isInstitution || isProfessor" class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
           data-bs-toggle="collapse" data-bs-target="#students-collapse" aria-expanded="false">
           Alunos
@@ -57,7 +57,7 @@
           </ul>
         </div>
       </li>
-      <li class="mb-1">
+      <li *ngIf="isAdmin || isInstitution" class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
           data-bs-toggle="collapse" data-bs-target="#courses-collapse" aria-expanded="false">
           Cursos
@@ -68,7 +68,7 @@
           </ul>
         </div>
       </li>
-      <li class="mb-1">
+      <li  *ngIf="isAdmin || isInstitution || isProfessor || isStudent" class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
           data-bs-toggle="collapse" data-bs-target="#subjects-collapse" aria-expanded="false">
           Matérias

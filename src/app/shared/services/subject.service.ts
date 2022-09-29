@@ -1,22 +1,18 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { environment } from '../../../environments/environment'
-import { NewProfessorInputDto } from 'src/app/shared/dtos/professor/newProfessorDto'
+import { NewSubjectInputDto } from 'src/app/shared/dtos/subject/newSubjectDto'
 
 @Injectable({ providedIn: 'root' })
-export class ProfessorService {
+export class SubjectService {
   constructor (
     private httpClient: HttpClient
   ) {}
 
-  create (input: NewProfessorInputDto) {
+  create (input: NewSubjectInputDto) {
     return this.httpClient.post(
-      `${environment.baseUrl}/professor`,
+      `${environment.baseUrl}/subject`,
       input
     )
-  }
-
-  getAllByInstitutionId () {
-    return this.httpClient.get(`${environment.baseUrl}/professor`)
   }
 }

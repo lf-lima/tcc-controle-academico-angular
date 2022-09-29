@@ -1,14 +1,14 @@
 <div class="d-flex sidebar">
   <div class="flex-shrink-0 p-3 bg-dark sidebar-body">
-    <a href="/" class="d-flex align-items-center pb-3 mb-3 text-decoration-none border-bottom">
+    <a [routerLink]="['/']" class="d-flex align-items-center pb-3 mb-3 text-decoration-none border-bottom">
       <span class="fs-5 fw-semibold">Controle Acadêmico</span>
     </a>
-    <p class="hello-text" *ngIf="isAdmin" ngModel>Administrador</p>
-    <p class="hello-text" *ngIf="isInstitution" ngModel>Instituição</p>
-    <p class="hello-text" *ngIf="isProfessor" ngModel>Professor</p>
-    <p class="hello-text" *ngIf="isStudent" ngModel>Aluno</p>
+    <p class="hello-text" *ngIf="isAdmin">Administrador</p>
+    <p class="hello-text" *ngIf="isInstitution">Instituição</p>
+    <p class="hello-text" *ngIf="isProfessor">Professor</p>
+    <p class="hello-text" *ngIf="isStudent">Aluno</p>
     <ul class="list-unstyled ps-0">
-      <li class="mb-1">
+      <!-- <li class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
           data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
           Home
@@ -20,7 +20,7 @@
             <li><a href="#" class="d-inline-flex text-decoration-none rounded">Reports</a></li>
           </ul>
         </div>
-      </li>
+      </li> -->
       <li *ngIf="isAdmin" class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
           data-bs-toggle="collapse" data-bs-target="#institutions-collapse" aria-expanded="false">
@@ -45,7 +45,7 @@
           </ul>
         </div>
       </li>
-      <li *ngIf="isAdmin || isInstitution || isProfessor" class="mb-1">
+      <li *ngIf="isAdmin || isInstitution" class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
           data-bs-toggle="collapse" data-bs-target="#students-collapse" aria-expanded="false">
           Alunos

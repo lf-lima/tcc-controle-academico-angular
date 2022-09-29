@@ -11,7 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { NewInstitutionComponent } from './new-institution/new-institution.component';
 import { NewProfessorComponent } from './new-professor/new-professor.component';
 import { NewStudentComponent } from './new-student/new-student.component';
-import { NewCourseComponent } from './new-course/new-course.component'
+import { NewCourseComponent } from './new-course/new-course.component';
+import { NewSubjectComponent } from './new-subject/new-subject.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NewCourseComponent } from './new-course/new-course.component'
     NewInstitutionComponent,
     NewProfessorComponent,
     NewStudentComponent,
-    NewCourseComponent
+    NewCourseComponent,
+    NewSubjectComponent
   ],
   imports: [
     BrowserModule,

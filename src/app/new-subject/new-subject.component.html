@@ -1,0 +1,42 @@
+<div class="h-100 d-flex justify-content-center align-items-center">
+  <div class="w-100">
+    <h1 class="text-center mb-4">Nova Matéria</h1>
+    <div class="row d-flex justify-content-center">
+      <div class="col-8">
+        <form [formGroup]="newSubjectForm" (ngSubmit)="onSubmit()">
+          <div class="row mt-4">
+            <div class="col-12">
+              <label for="subjectName" class="form-label">Nome</label>
+              <input formControlName="subjectName" #subjectName type="text" class="form-control" id="subjectName">
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-12">
+              <label for="subjectDescription" class="form-label">Sobre a Matéria</label>
+              <textarea formControlName="subjectDescription" #subjectDescription type="text" class="form-control" id="subjectDescription" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-6">
+              <label for="courseId" class="form-label">Curso</label>
+              <select formControlName="courseId" #courseId id="courseId" class="form-select" aria-label="Default select example">
+                <option hidden selected></option>
+                <option *ngFor="let course of courses" value="{{course.id}}">{{course.courseName}}</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="professorId" class="form-label">Professor</label>
+              <select formControlName="professorId" #professorId id="professorId" class="form-select" aria-label="Default select example">
+                <option hidden selected></option>
+                <option *ngFor="let professor of professors" value="{{professor.id}}">{{professor.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="mt-4 d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

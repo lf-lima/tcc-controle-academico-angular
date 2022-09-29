@@ -15,4 +15,8 @@ export class CourseService {
       input
     )
   }
+
+  getAllByInstitutionId () {
+    return this.httpClient.get(`${environment.baseUrl}/course`)
+  }
 }

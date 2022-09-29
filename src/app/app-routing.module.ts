@@ -6,6 +6,7 @@ import { NewCourseComponent } from 'src/app/new-course/new-course.component'
 import { NewInstitutionComponent } from 'src/app/new-institution/new-institution.component'
 import { NewProfessorComponent } from 'src/app/new-professor/new-professor.component'
 import { NewStudentComponent } from 'src/app/new-student/new-student.component'
+import { NewSubjectComponent } from 'src/app/new-subject/new-subject.component'
 import { AuthGuard } from 'src/app/shared/services/authGuard.service'
 
 const routes: Routes = [
@@ -56,6 +57,15 @@ const routes: Routes = [
       {
         path: 'new',
         component: NewCourseComponent
+      }
+    ]
+  },
+  {
+    path: 'subject',
+    children: [
+      {
+        path: 'new',
+        component: NewSubjectComponent
       }
     ]
   }

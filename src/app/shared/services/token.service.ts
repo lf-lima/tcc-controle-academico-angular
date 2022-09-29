@@ -26,6 +26,7 @@ export class TokenService {
 
   removeToken (): void {
     window.localStorage.removeItem(this.tokenId)
+    window.localStorage.removeItem(this.tokenPayload)
   }
 
   decodeToken (token: string) {

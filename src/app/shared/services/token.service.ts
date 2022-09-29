@@ -1,34 +1,34 @@
 import { Injectable } from '@angular/core'
 import jwtDecode from 'jwt-decode'
+import { TokenPayload } from 'src/app/shared/models/tokenPayload'
 
 @Injectable({ providedIn: 'root' })
 export class TokenService {
-  private tokenId: string = 'authToken'
-  private permissionsId: string = 'userPermissions'
+  private tokenId = 'authToken'
+  private tokenPayload = 'tokenPayload'
 
   getToken (): string | null {
     return window.localStorage.getItem(this.tokenId)
   }
 
-  getPermissions (): string[] {
-    const permissionsString = window.localStorage.getItem(this.permissionsId) as string
-    return JSON.parse(permissionsString)
+  getTokenPayload (): TokenPayload {
+    const tokenPayloadString = window.localStorage.getItem(this.tokenPayload) as string
+    return JSON.parse(tokenPayloadString)
   }
 
   setToken (token: string): void {
     window.localStorage.setItem(this.tokenId, token)
 
-    const permissions = this.getPermissionsFromToken(token)
+    const tokenPayload = this.decodeToken(token)
 
-    window.localStorage.setItem(this.permissionsId, JSON.stringify(permissions))
+    window.localStorage.setItem(this.tokenPayload, JSON.stringify(tokenPayload))
   }
 
   removeToken (): void {
     window.localStorage.removeItem(this.tokenId)
   }
 
-  getPermissionsFromToken (token: string) {
-    const decode = jwtDecode(token) as any
-    return decode.permissions
+  decodeToken (token: string) {
+    return jwtDecode(token) as any
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { TokenPayload } from 'src/app/shared/models/tokenPayload'
 import { AuthService } from 'src/app/shared/services/auth.service'
 import { TokenService } from 'src/app/shared/services/token.service'
 
@@ -15,20 +16,33 @@ export class SidebarComponent implements OnInit {
   ) { }
 
   count = 0
-  permissions!: string[]
+  tokenPayload!: TokenPayload
+
+  isAdmin = false
+  isInstitution = false
+  isProfessor = false
+  isStudent = false
 
   ngOnInit (): void {
-    this.permissions = this.tokenService.getPermissions()
+    this.tokenPayload = this.tokenService.getTokenPayload()
+    this.checkUser()
   }
 
   checkHasPermission (requiredPermission: string): boolean {
-    return !!this.permissions.find(permission => permission === requiredPermission)
+    const { permissions } = this.tokenPayload
+    return !!permissions.find(permission => permission === requiredPermission)
   }
 
-  checkHasChildren (test: any): boolean {
-    console.log(test)
-
-    return true
+  checkUser () {
+    if (this.tokenPayload.studentId) {
+      this.isStudent = true
+    } else if (this.tokenPayload.professorId) {
+      this.isProfessor = true
+    } else if (this.tokenPayload.institutionId) {
+      this.isInstitution = true
+    } else {
+      this.isAdmin = true
+    }
   }
 
   logout () {

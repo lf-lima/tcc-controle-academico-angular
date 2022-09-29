@@ -3,7 +3,10 @@
     <a href="/" class="d-flex align-items-center pb-3 mb-3 text-decoration-none border-bottom">
       <span class="fs-5 fw-semibold">Controle Acadêmico</span>
     </a>
-    <p class="hello-text">Ola Professor Luiz!</p>
+    <p class="hello-text" *ngIf="isAdmin" ngModel>Administrador</p>
+    <p class="hello-text" *ngIf="isInstitution" ngModel>Instituição</p>
+    <p class="hello-text" *ngIf="isProfessor" ngModel>Professor</p>
+    <p class="hello-text" *ngIf="isStudent" ngModel>Aluno</p>
     <ul class="list-unstyled ps-0">
       <li class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
@@ -25,8 +28,8 @@
         </button>
         <div class="collapse" id="institutions-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a [routerLink]="['/institution/new']" class="d-inline-flex text-decoration-none rounded">Nova
-                Instituição</a></li>
+            <li><a *ngIf="checkHasPermission('createInstitution')" [routerLink]="['/institution/new']"
+                class="d-inline-flex text-decoration-none rounded">Nova Instituição</a></li>
           </ul>
         </div>
       </li>
@@ -37,7 +40,7 @@
         </button>
         <div class="collapse" id="professors-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a [routerLink]="['/professor/new']" class="d-inline-flex text-decoration-none rounded">Novo
+            <li><a *ngIf="checkHasPermission('createProfessor')" [routerLink]="['/professor/new']" class="d-inline-flex text-decoration-none rounded">Novo
                 Professor</a></li>
           </ul>
         </div>
@@ -49,7 +52,7 @@
         </button>
         <div class="collapse" id="students-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a [routerLink]="['/student/new']" class="d-inline-flex text-decoration-none rounded">Novo Aluno</a>
+            <li><a *ngIf="checkHasPermission('createStudent')" [routerLink]="['/student/new']" class="d-inline-flex text-decoration-none rounded">Novo Aluno</a>
             </li>
           </ul>
         </div>
@@ -61,7 +64,7 @@
         </button>
         <div class="collapse" id="courses-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a [routerLink]="['/course/new']" class="d-inline-flex text-decoration-none rounded">Novo Curso</a></li>
+            <li><a *ngIf="checkHasPermission('createCourse')" [routerLink]="['/course/new']" class="d-inline-flex text-decoration-none rounded">Novo Curso</a></li>
           </ul>
         </div>
       </li>

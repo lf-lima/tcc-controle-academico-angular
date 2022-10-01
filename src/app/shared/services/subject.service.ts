@@ -15,4 +15,8 @@ export class SubjectService {
       input
     )
   }
+
+  getAllSubjects () {
+    return this.httpClient.get(`${environment.baseUrl}/subject`)
+  }
 }

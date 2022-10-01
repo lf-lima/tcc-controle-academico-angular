@@ -27,47 +27,61 @@ const routes: Routes = [
   },
   {
     path: 'institution',
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'new',
-        component: NewInstitutionComponent
+        component: NewInstitutionComponent,
+        canActivate: [AuthGuard]
       }
     ]
   },
   {
     path: 'professor',
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'new',
-        component: NewProfessorComponent
+        component: NewProfessorComponent,
+        canActivate: [AuthGuard]
       }
     ]
   },
   {
     path: 'student',
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'new',
-        component: NewStudentComponent
+        component: NewStudentComponent,
+        canActivate: [AuthGuard]
       }
     ]
   },
   {
     path: 'course',
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'new',
-        component: NewCourseComponent
+        component: NewCourseComponent,
+        canActivate: [AuthGuard]
       }
     ]
   },
   {
     path: 'subject',
-    component: ListSubjectComponent,
+    canActivate: [AuthGuard],
     children: [
       {
+        path: '',
+        component: ListSubjectComponent,
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'new',
-        component: NewSubjectComponent
+        component: NewSubjectComponent,
+        canActivate: [AuthGuard]
       }
     ]
   }

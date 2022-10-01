@@ -22,15 +22,15 @@
         <h5 class="modal-title" id="uploadModalLabel">Upload de arquivo</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-        <div class="modal-body">
-          <div class="mb-3 mt-3">
-            <input (change)="onChange($event)" name="newFile" class="form-control" type="file" id="newFile">
-          </div>
+      <div class="modal-body">
+        <div class="mb-3 mt-3">
+          <input (change)="onChange($event)" name="newFile" class="form-control" type="file" id="newFile">
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-          <button type="button" (click)="uploadFile()" class="btn btn-primary" data-bs-dismiss="modal">Enviar</button>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" (click)="uploadFile()" class="btn btn-primary" data-bs-dismiss="modal">Enviar</button>
+      </div>
     </div>
   </div>
 </div>

@@ -34,7 +34,6 @@ export class ShowSubjectComponent implements OnInit {
     this.subjectService.getSubjectById(this.subjectId).subscribe((response: any) => { this.subject = response.body })
   }
 
-
   onChange (event: any) {
     this.file = event.target.files[0]
   }

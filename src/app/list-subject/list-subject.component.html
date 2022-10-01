@@ -1,8 +1,8 @@
 <div class="h-100 d-flex justify-content-center p-4">
   <div class="w-100">
-    <h1 class="mt-4 mb-4">Matérias</h1>
+    <h1 class="mt-4 mb-4 border-bottom pb-4">Matérias</h1>
 
-    <div *ngFor="let subject of subjects" [routerLink]="['/subject/{{subject.id}}']" class="card w-100 mt-4 subject-card">
+    <div *ngFor="let subject of subjects" [routerLink]="['/subject', subject.id]" class="card w-100 mt-4 subject-card">
       <div class="card-body w-100 d-flex align-items-center">
         <h2>{{subject.subjectName}}</h2>
       </div>

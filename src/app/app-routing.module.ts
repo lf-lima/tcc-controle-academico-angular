@@ -9,6 +9,7 @@ import { NewProfessorComponent } from 'src/app/new-professor/new-professor.compo
 import { NewStudentComponent } from 'src/app/new-student/new-student.component'
 import { NewSubjectComponent } from 'src/app/new-subject/new-subject.component'
 import { AuthGuard } from 'src/app/shared/services/authGuard.service'
+import { ShowSubjectComponent } from 'src/app/show-subject/show-subject.component'
 
 const routes: Routes = [
   {
@@ -75,12 +76,19 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        pathMatch: 'full',
         component: ListSubjectComponent,
         canActivate: [AuthGuard]
       },
       {
         path: 'new',
+        pathMatch: 'full',
         component: NewSubjectComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: ':subjectId',
+        component: ShowSubjectComponent,
         canActivate: [AuthGuard]
       }
     ]

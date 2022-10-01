@@ -30,4 +30,12 @@ export class SubjectService {
 
     return this.httpClient.post(`${environment.baseUrl}/subject/${subjectId}/file/upload`, formData)
   }
+
+  getAllUploadedFilesBySubjectId (subjectId: number) {
+    return this.httpClient.get(`${environment.baseUrl}/subject/${subjectId}/file`)
+  }
+
+  getDownloadUrlFromUploadedFile (subjectId: number, fileId: number) {
+    return this.httpClient.get(`${environment.baseUrl}/subject/${subjectId}/file/${fileId}/download`)
+  }
 }

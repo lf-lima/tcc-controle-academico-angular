@@ -12,7 +12,8 @@ import { NewInstitutionComponent } from './new-institution/new-institution.compo
 import { NewProfessorComponent } from './new-professor/new-professor.component';
 import { NewStudentComponent } from './new-student/new-student.component';
 import { NewCourseComponent } from './new-course/new-course.component';
-import { NewSubjectComponent } from './new-subject/new-subject.component'
+import { NewSubjectComponent } from './new-subject/new-subject.component';
+import { ListSubjectComponent } from './list-subject/list-subject.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NewSubjectComponent } from './new-subject/new-subject.component'
     NewProfessorComponent,
     NewStudentComponent,
     NewCourseComponent,
-    NewSubjectComponent
+    NewSubjectComponent,
+    ListSubjectComponent
   ],
   imports: [
     BrowserModule,

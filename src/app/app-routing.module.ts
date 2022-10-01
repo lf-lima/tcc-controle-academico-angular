@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { HomeComponent } from 'src/app/home/home.component'
+import { ListSubjectComponent } from 'src/app/list-subject/list-subject.component'
 import { LoginComponent } from 'src/app/login/login.component'
 import { NewCourseComponent } from 'src/app/new-course/new-course.component'
 import { NewInstitutionComponent } from 'src/app/new-institution/new-institution.component'
@@ -62,6 +63,7 @@ const routes: Routes = [
   },
   {
     path: 'subject',
+    component: ListSubjectComponent,
     children: [
       {
         path: 'new',

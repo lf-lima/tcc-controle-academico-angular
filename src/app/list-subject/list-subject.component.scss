@@ -1,0 +1,9 @@
+.subject-card {
+  height: 150px;
+  background-color: darkgray;
+}
+
+.subject-card:hover {
+  opacity: 0.8;
+  cursor: crosshair;
+}

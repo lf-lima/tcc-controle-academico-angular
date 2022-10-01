@@ -75,8 +75,10 @@
         </button>
         <div class="collapse" id="subjects-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a *ngIf="checkHasPermission('createSubject')" [routerLink]="['/subject/new']"
-                class="d-inline-flex text-decoration-none rounded">Nova Matéria</a></li>
+            <li><a [routerLink]="['/subject']"
+                class="d-inline-flex text-decoration-none rounded">Lista</a></li>
+                <li><a *ngIf="checkHasPermission('createSubject')" [routerLink]="['/subject/new']"
+                    class="d-inline-flex text-decoration-none rounded">Nova Matéria</a></li>
           </ul>
         </div>
       </li>

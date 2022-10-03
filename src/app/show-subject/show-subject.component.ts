@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router'
 import { Subject } from 'src/app/shared/models/subject'
 import { UploadedFile } from 'src/app/shared/models/uploadedFile'
 import { SubjectService } from 'src/app/shared/services/subject.service'
+import { TokenService } from 'src/app/shared/services/token.service'
 
 @Component({
   selector: 'app-show-subject',
@@ -27,6 +28,7 @@ export class ShowSubjectComponent implements OnInit {
 
   constructor (
     private subjectService: SubjectService,
+    private tokenService: TokenService,
     private route: ActivatedRoute
   ) { }
 
@@ -68,5 +70,17 @@ export class ShowSubjectComponent implements OnInit {
       anchor.click()
       anchor.remove()
     })
+  }
+
+  deleteFile (fileId: number) {
+    this.subjectService.deleteUploadedFile(this.subjectId, fileId).subscribe((response: any) => {
+      this.getAllUploadedFiles()
+    })
+  }
+
+  checkUserHaveDeleteFilePermission () {
+    const { permissions } = this.tokenService.getTokenPayload()
+
+    return !!permissions.find(permission => permission === 'deleteUploadedFile')
   }
 }

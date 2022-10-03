@@ -18,9 +18,9 @@
                 <h5 class="card-title text-center">{{uploadedFile.fileName}}.{{uploadedFile.extension}}</h5>
               </div>
               <div class="card-footer p-0">
-                <button type="button" (click)="downloadFile(uploadedFile.id)"
+                <button type="button" (ngClass)="checkUserHaveDeleteFilePermission() ? '' : 'w-100'" (click)="downloadFile(uploadedFile.id)"
                   class="btn btn-sm btn-primary w-50">Download</button>
-                <button type="button" class="btn btn-sm btn-danger w-50">Excluir</button>
+                <button type="button" *ngIf="checkUserHaveDeleteFilePermission()" (click)="deleteFile(uploadedFile.id)" class="btn btn-sm btn-danger w-50">Excluir</button>
               </div>
             </div>
           </div>

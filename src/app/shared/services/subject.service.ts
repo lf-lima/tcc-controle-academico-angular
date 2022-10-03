@@ -38,4 +38,8 @@ export class SubjectService {
   getDownloadUrlFromUploadedFile (subjectId: number, fileId: number) {
     return this.httpClient.get(`${environment.baseUrl}/subject/${subjectId}/file/${fileId}/download`)
   }
+
+  deleteUploadedFile (subjectId: number, uploadedFileId: number) {
+    return this.httpClient.delete(`${environment.baseUrl}/subject/${subjectId}/file/${uploadedFileId}/delete`)
+  }
 }

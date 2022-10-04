@@ -5,13 +5,22 @@
       <div class="col-8">
         <form [formGroup]="newStudentForm" (ngSubmit)="onSubmit()">
           <div class="row mt-4">
-            <div class="col-8">
+            <div class="col-12">
               <label for="name" class="form-label">Nome</label>
               <input formControlName="name" #name type="text" class="form-control" id="name">
             </div>
-            <div class="col-4">
+          </div>
+          <div class="row mt-4">
+            <div class="col-5">
               <label for="documentNumber" class="form-label">CPF</label>
               <input formControlName="documentNumber" #documentNumber type="text" class="form-control" id="documentNumber">
+            </div>
+            <div class="col-7">
+              <label for="courseId" class="form-label">Curso</label>
+              <select formControlName="courseId" #courseId id="courseId" class="form-select" aria-label="Default select example">
+                <option hidden selected></option>
+                <option *ngFor="let course of courses" value="{{course.id}}">{{course.courseName}}</option>
+              </select>
             </div>
           </div>
           <div class="row mt-4 mb-4">

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
 import { NewStudentInputDto } from 'src/app/shared/dtos/student/newStudentDto'
+import { Course } from 'src/app/shared/models/course'
+import { CourseService } from 'src/app/shared/services/course.service'
 import { StudentService } from 'src/app/shared/services/student.service'
 import { catchErrorFunction } from 'src/app/shared/utils/catchErrorFunction'
 
@@ -18,11 +20,15 @@ export class NewStudentComponent implements OnInit {
     confirmPassword: new FormControl('')
   })
 
+  courses!: Course[]
+
   constructor (
-    private studentService: StudentService
+    private studentService: StudentService,
+    private courseService: CourseService
   ) { }
 
   ngOnInit (): void {
+    this.courseService.getAllByInstitutionId().subscribe((response: any) => { this.courses = response.body })
   }
 
   onSubmit () {

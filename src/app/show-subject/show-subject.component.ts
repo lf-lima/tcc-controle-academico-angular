@@ -26,6 +26,8 @@ export class ShowSubjectComponent implements OnInit {
   file!: File
   subjectId!: number
 
+  permissions!: string[]
+
   constructor (
     private subjectService: SubjectService,
     private tokenService: TokenService,
@@ -33,6 +35,7 @@ export class ShowSubjectComponent implements OnInit {
   ) { }
 
   ngOnInit (): void {
+    this.permissions = this.tokenService.getTokenPayload().permissions
     this.subjectId = Number(this.route.snapshot.paramMap.get('subjectId'))
 
     this.subjectService.getSubjectById(this.subjectId).subscribe((response: any) => { this.subject = response.body })
@@ -78,9 +81,7 @@ export class ShowSubjectComponent implements OnInit {
     })
   }
 
-  checkUserHaveDeleteFilePermission () {
-    const { permissions } = this.tokenService.getTokenPayload()
-
-    return !!permissions.find(permission => permission === 'deleteUploadedFile')
+  checkUserHavePermission (requiredPermission: string) {
+    return !!this.permissions.find(permission => permission === requiredPermission)
   }
 }

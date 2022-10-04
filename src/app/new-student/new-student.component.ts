@@ -17,7 +17,8 @@ export class NewStudentComponent implements OnInit {
     about: new FormControl(''),
     documentNumber: new FormControl(''),
     password: new FormControl(''),
-    confirmPassword: new FormControl('')
+    confirmPassword: new FormControl(''),
+    courseId: new FormControl(0)
   })
 
   courses!: Course[]
@@ -32,7 +33,10 @@ export class NewStudentComponent implements OnInit {
   }
 
   onSubmit () {
-    this.studentService.create(this.newStudentForm.value as NewStudentInputDto).subscribe(
+    const newStudentForm = this.newStudentForm.value
+    newStudentForm.courseId = Number(newStudentForm.courseId)
+
+    this.studentService.create(newStudentForm as NewStudentInputDto).subscribe(
       {
         next: (response) => {
           alert('Aluno criado com sucesso!')

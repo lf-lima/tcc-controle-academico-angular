@@ -1,15 +1,19 @@
 <div class="d-flex sidebar">
-  <div class="flex-shrink-0 p-3 bg-dark sidebar-body">
-    <a [routerLink]="['/']" class="d-flex align-items-center pb-3 mb-3 text-decoration-none border-bottom">
-      <span class="fs-5 fw-semibold">Controle Acadêmico</span>
-    </a>
+  <div class="flex-shrink-0 p-3 sidebar-body">
+    <div class="sidebar-header border-bottom d-flex align-items-center justify-content-between pb-3 mb-3">
+      <a [routerLink]="['/']" class="fs-5 fw-semibold text-decoration-none">Controle Acadêmico</a>
+      <a [routerLink]="['/login']" (click)="logout()" class="fs-5 fw-semibold text-decoration-none ms-auto">
+        <fa-icon [icon]="icon" class="ms-auto"></fa-icon>
+      </a>
+    </div>
+
     <p class="hello-text" *ngIf="isAdmin">Administrador</p>
     <p class="hello-text" *ngIf="isInstitution">Instituição</p>
     <p class="hello-text" *ngIf="isProfessor">Professor</p>
     <p class="hello-text" *ngIf="isStudent">Aluno</p>
-    <ul class="list-unstyled ps-0">
+    <ul class="list-unstyled ps-0 sidebar-list">
       <!-- <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+        <button class="btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0 collapsed"
           data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
           Home
         </button>
@@ -22,7 +26,7 @@
         </div>
       </li> -->
       <li *ngIf="isAdmin" class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+        <button class="btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0 collapsed"
           data-bs-toggle="collapse" data-bs-target="#institutions-collapse" aria-expanded="false">
           Instituições
         </button>
@@ -34,57 +38,58 @@
         </div>
       </li>
       <li *ngIf="isAdmin || isInstitution" class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+        <button class="btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0 collapsed"
           data-bs-toggle="collapse" data-bs-target="#professors-collapse" aria-expanded="false">
           Professores
         </button>
         <div class="collapse" id="professors-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a *ngIf="checkHasPermission('createProfessor')" [routerLink]="['/professor/new']" class="d-inline-flex text-decoration-none rounded">Novo
+            <li><a *ngIf="checkHasPermission('createProfessor')" [routerLink]="['/professor/new']"
+                class="d-inline-flex text-decoration-none rounded">Novo
                 Professor</a></li>
           </ul>
         </div>
       </li>
       <li *ngIf="isAdmin || isInstitution" class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+        <button class="btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0 collapsed"
           data-bs-toggle="collapse" data-bs-target="#students-collapse" aria-expanded="false">
           Alunos
         </button>
         <div class="collapse" id="students-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a *ngIf="checkHasPermission('createStudent')" [routerLink]="['/student/new']" class="d-inline-flex text-decoration-none rounded">Novo Aluno</a>
+            <li><a *ngIf="checkHasPermission('createStudent')" [routerLink]="['/student/new']"
+                class="d-inline-flex text-decoration-none rounded">Novo Aluno</a>
             </li>
           </ul>
         </div>
       </li>
       <li *ngIf="isAdmin || isInstitution" class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+        <button class="btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0 collapsed"
           data-bs-toggle="collapse" data-bs-target="#courses-collapse" aria-expanded="false">
           Cursos
         </button>
         <div class="collapse" id="courses-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a *ngIf="checkHasPermission('createCourse')" [routerLink]="['/course/new']" class="d-inline-flex text-decoration-none rounded">Novo Curso</a></li>
+            <li><a *ngIf="checkHasPermission('createCourse')" [routerLink]="['/course/new']"
+                class="d-inline-flex text-decoration-none rounded">Novo Curso</a></li>
           </ul>
         </div>
       </li>
-      <li  *ngIf="isAdmin || isInstitution || isProfessor || isStudent" class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+      <li *ngIf="isAdmin || isInstitution || isProfessor || isStudent" class="mb-1">
+        <button class="btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0 collapsed"
           data-bs-toggle="collapse" data-bs-target="#subjects-collapse" aria-expanded="false">
           Matérias
         </button>
         <div class="collapse" id="subjects-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a [routerLink]="['/subject']"
-                class="d-inline-flex text-decoration-none rounded">Lista</a></li>
-                <li><a *ngIf="checkHasPermission('createSubject')" [routerLink]="['/subject/new']"
-                    class="d-inline-flex text-decoration-none rounded">Nova Matéria</a></li>
+            <li><a [routerLink]="['/subject']" class="d-inline-flex text-decoration-none rounded">Lista</a></li>
+            <li><a *ngIf="checkHasPermission('createSubject')" [routerLink]="['/subject/new']"
+                class="d-inline-flex text-decoration-none rounded">Nova Matéria</a></li>
           </ul>
         </div>
       </li>
-      <li class="border-top my-3"></li>
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+      <!-- <li class="mb-1">
+        <button class="btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0 collapsed"
           data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
           Conta
         </button>
@@ -93,7 +98,7 @@
             <li><a href="#" class="d-inline-flex text-decoration-none rounded" (click)="logout()">Sair</a></li>
           </ul>
         </div>
-      </li>
+      </li> -->
     </ul>
   </div>
 </div>

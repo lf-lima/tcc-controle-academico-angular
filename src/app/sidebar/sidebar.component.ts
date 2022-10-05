@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { TokenPayload } from 'src/app/shared/models/tokenPayload'
 import { AuthService } from 'src/app/shared/services/auth.service'
 import { TokenService } from 'src/app/shared/services/token.service'
+import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,6 +10,8 @@ import { TokenService } from 'src/app/shared/services/token.service'
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+
+  icon = faSignOut
 
   constructor (
     private authService: AuthService,

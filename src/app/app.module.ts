@@ -15,6 +15,7 @@ import { NewCourseComponent } from './new-course/new-course.component';
 import { NewSubjectComponent } from './new-subject/new-subject.component';
 import { ListSubjectComponent } from './list-subject/list-subject.component';
 import { ShowSubjectComponent } from './show-subject/show-subject.component'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ShowSubjectComponent } from './show-subject/show-subject.component'
   imports: [
     BrowserModule,
     SharedModule,
+    FontAwesomeModule,
     AppRoutingModule,
     BrowserAnimationsModule
   ],

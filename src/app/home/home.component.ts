@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.socketService.userEnter()
     console.log('connect')
     this.socketService.onFetchMessages().subscribe((data: any) => console.log('TESTE: ', data))
     console.log('messages')

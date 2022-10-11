@@ -11,8 +11,8 @@ export class SocketService {
   }
 
 	// emit event
-	userEnter () {
-		this.socket.emit('user:enter', 'Luizao')
+	userEnter (username: string) {
+		this.socket.emit('user:enter', username)
 	}
 
 	// listen event

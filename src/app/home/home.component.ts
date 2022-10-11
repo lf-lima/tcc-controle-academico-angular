@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SocketService } from 'src/app/shared/services/socket.service'
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private socketService: SocketService
+  ) { }
 
   ngOnInit(): void {
+    this.socketService.userEnter()
+    console.log('connect')
+    this.socketService.onFetchMessages().subscribe((data: any) => console.log('TESTE: ', data))
+    console.log('messages')
   }
 
 }

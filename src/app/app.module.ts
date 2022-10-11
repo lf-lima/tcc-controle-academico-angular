@@ -16,6 +16,15 @@ import { NewSubjectComponent } from './new-subject/new-subject.component';
 import { ListSubjectComponent } from './list-subject/list-subject.component';
 import { ShowSubjectComponent } from './show-subject/show-subject.component'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io'
+import { environment } from 'src/environments/environment'
+
+const config: SocketIoConfig = {
+	url: environment.socketUrl,
+	options: {
+		transports: ['websocket']
+	}
+}
 
 @NgModule({
   declarations: [
@@ -33,6 +42,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
   ],
   imports: [
     BrowserModule,
+    SocketIoModule.forRoot(config),
     SharedModule,
     FontAwesomeModule,
     AppRoutingModule,

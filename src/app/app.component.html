@@ -1,6 +1,10 @@
 <div class="d-flex app-body">
   <app-sidebar *ngIf="checkIfAuthenticated()"></app-sidebar>
-  <div class="app-content">
+  <!-- <app-chat class="w-100 h-100" *ngIf="checkIfAuthenticated()"></app-chat> -->
+
+
+  <div class="app-content position-relative">
+    <app-chat *ngIf="checkIfAuthenticated()"></app-chat>
     <div class="container w-100 h-100 pt-4 pb-4">
       <router-outlet></router-outlet>
     </div>

@@ -1,7 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router'
 import { AuthService } from 'src/app/shared/services/auth.service'
+import { ChatService } from 'src/app/shared/services/chat.service'
 import { TokenService } from 'src/app/shared/services/token.service'
 import { catchErrorFunction } from 'src/app/shared/utils/catchErrorFunction'
 
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor (
     private authService: AuthService,
     private tokenService: TokenService,
-    private router: Router
+    private router: Router,
+    private chatService: ChatService
   ) { }
 
   ngOnInit (): void {

@@ -1,5 +1,7 @@
-<div class="login-card">
-  <div class="card" style="min-width: 50vh;min-height: 30vh;box-shadow: rgb(38 57 77) 0px 20px 30px -10px; border: 0; background-color: darkgrey;">
+<div class="login-card flex-column">
+  <h1 class="mb-4 text-primary">Controle Acadêmico Web com Node.js</h1>
+
+  <div class="card mt-4">
     <div class="card-body">
       <div>
         <h5 class="card-title text-center mt-2">Faça seu login</h5>
@@ -8,7 +10,8 @@
         <form [formGroup]="loginForm" (ngSubmit)="login()">
           <div class="mb-3">
             <label for="documentNumber" class="form-label">CPF / CNPJ</label>
-            <input formControlName="documentNumber" #documentNumber type="text" class="form-control" id="documentNumber">
+            <input formControlName="documentNumber" #documentNumber type="text" class="form-control"
+              id="documentNumber">
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Senha</label>

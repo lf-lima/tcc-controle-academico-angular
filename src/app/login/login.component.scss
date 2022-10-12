@@ -7,3 +7,11 @@
   height: 100%;
   justify-content: center;
 }
+
+.card {
+  min-width: 50vh;
+  min-height: 30vh;
+  box-shadow: rgb(38 57 77) 0px 20px 30px -10px;
+  border: 0;
+  background-color: darkgrey;
+}

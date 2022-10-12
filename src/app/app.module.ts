@@ -17,7 +17,8 @@ import { ListSubjectComponent } from './list-subject/list-subject.component';
 import { ShowSubjectComponent } from './show-subject/show-subject.component'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io'
-import { environment } from 'src/environments/environment'
+import { environment } from 'src/environments/environment';
+import { ChatComponent } from './chat/chat.component'
 
 const config: SocketIoConfig = {
 	url: environment.socketUrl,
@@ -38,7 +39,8 @@ const config: SocketIoConfig = {
     NewCourseComponent,
     NewSubjectComponent,
     ListSubjectComponent,
-    ShowSubjectComponent
+    ShowSubjectComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

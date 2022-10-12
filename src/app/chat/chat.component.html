@@ -1,0 +1,20 @@
+<div class="card position-absolute bottom-0 end-0 border-top" style="width: 18rem;">
+  <div class="card-header">
+    Usuários Online
+  </div>
+  <ul class="list-group list-group-flush">
+    <li *ngFor="let user of usersOnline | async" class="list-group-item" (click)="newChat(user)">{{user.username}}</li>
+  </ul>
+</div>
+
+<div *ngFor="let chatActive of chatsActive | async" class="card position-absolute bottom-0 border-top"
+  [ngStyle]="{'right.rem': chatActive.position * 19 }" style="width: 18rem;">
+  <div class="card-header">
+    <span *ngFor="let participant of chatActive.participants">{{participant.username}}, </span>
+  </div>
+  <p *ngFor="let msgObject of chatActive.messages"><b>{{msgObject.username}}:</b> {{msgObject.message}}</p>
+  <div class="card-footer p-0 d-flex flex-row">
+    <input style="width: 85%;" #message type="text" class="form-control m-0" id="message">
+    <button (click)="sendMessage(chatActive.chatId, message.value)" style="width: 15%;" type="submit" class="btn btn-primary text-center"> > </button>
+  </div>
+</div>

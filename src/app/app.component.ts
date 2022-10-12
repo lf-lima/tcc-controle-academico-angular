@@ -1,5 +1,4 @@
 import { Component } from '@angular/core'
-import { SocketService } from 'src/app/shared/services/socket.service'
 import { TokenService } from 'src/app/shared/services/token.service'
 
 @Component({
@@ -9,26 +8,13 @@ import { TokenService } from 'src/app/shared/services/token.service'
 })
 export class AppComponent {
   title = 'tcc-controle-academico-angular'
-  token!: string | null
+  usersOnline: Array<{ username: string, socketId: string }> = [{ username: 'User Example', socketId: '123' }]
 
   constructor (
     private tokenService: TokenService,
-    private socketService: SocketService
-  ) {
-    this.token = this.tokenService.getToken()
-    this.userEnter()
-  }
-
-  userEnter() {
-    if (this.token) {
-      const { username } = this.tokenService.getTokenPayload()
-      console.log('enter user', username)
-      this.socketService.userEnter(username)
-    }
-  }
+  ) { }
 
   checkIfAuthenticated () {
-    this.token = this.tokenService.getToken()
-    return !!this.token
+    return !!this.tokenService.getToken()
   }
 }

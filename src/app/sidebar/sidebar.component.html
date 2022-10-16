@@ -14,59 +14,26 @@
         <a [routerLink]="['/institutions']" class="btn w-100 d-inline-flex align-items-center rounded border-0">
           Instituições
         </a>
-        <!-- <div class="collapse" id="institutions-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a *ngIf="checkHasPermission('createInstitution')" [routerLink]="['/institution/new']"
-                class="d-inline-flex text-decoration-none rounded">Nova Instituição</a></li>
-          </ul>
-        </div> -->
       </li>
-      <li *ngIf="isAdmin || isInstitution" class="mb-1">
+      <li *ngIf="isInstitution" class="mb-1">
         <a [routerLink]="['/professors']" class="btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0">
           Professores
         </a>
-        <!-- <div class="collapse" id="professors-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a *ngIf="checkHasPermission('createProfessor')" [routerLink]="['/professor/new']"
-                class="d-inline-flex text-decoration-none rounded">Novo
-                Professor</a></li>
-          </ul>
-        </div> -->
       </li>
-      <li *ngIf="isAdmin || isInstitution" class="mb-1">
+      <li *ngIf="isInstitution" class="mb-1">
         <a [routerLink]="['/students']" class="btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0">
           Estudantes
         </a>
-        <!-- <div class="collapse" id="students-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a *ngIf="checkHasPermission('createStudent')" [routerLink]="['/student/new']"
-                class="d-inline-flex text-decoration-none rounded">Novo Aluno</a>
-            </li>
-          </ul>
-        </div> -->
       </li>
-      <li *ngIf="isAdmin || isInstitution" class="mb-1">
+      <li *ngIf="isInstitution" class="mb-1">
         <a [routerLink]="['/courses']" class="btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0">
           Cursos
         </a>
-        <!-- <div class="collapse" id="courses-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a *ngIf="checkHasPermission('createCourse')" [routerLink]="['/course/new']"
-                class="d-inline-flex text-decoration-none rounded">Novo Curso</a></li>
-          </ul>
-        </div> -->
       </li>
-      <li *ngIf="isAdmin || isInstitution || isProfessor || isStudent" class="mb-1">
+      <li *ngIf="isInstitution || isProfessor || isStudent" class="mb-1">
         <a [routerLink]="['/subjects']" class="btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0">
           Matérias
         </a>
-        <!-- <div class="collapse" id="subjects-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a [routerLink]="['/subject']" class="d-inline-flex text-decoration-none rounded">Lista</a></li>
-            <li><a *ngIf="checkHasPermission('createSubject')" [routerLink]="['/subject/new']"
-                class="d-inline-flex text-decoration-none rounded">Nova Matéria</a></li>
-          </ul>
-        </div> -->
       </li>
     </ul>
   </div>

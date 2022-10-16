@@ -5,15 +5,15 @@
       <h5 class="card-header d-grid gap-2 d-md-flex justify-content-md-end align-items-center">
         <span class="me-auto"> Arquivos</span>
 
-        <button *ngIf="checkUserHavePermission('uploadFileToSubject')" type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal">
+        <button *ngIf="checkUserHavePermission('uploadFileToSubject')" type="button" class="btn btn-sm btn-primary"
+          data-bs-toggle="modal" data-bs-target="#uploadModal">
           Novo arquivo
         </button>
       </h5>
       <div class="card-body">
-        <div class="row">
+        <!-- <div class="row">
           <div *ngFor="let uploadedFile of uploadedFiles" class="col-3 mb-4">
             <div class="card">
-              <!-- <div class="extension-box border-bottom ">.{{uploadedFile.extension}}</div> -->
               <div class="card-body">
                 <h5 class="card-title text-center">{{uploadedFile.fileName}}.{{uploadedFile.extension}}</h5>
               </div>
@@ -26,7 +26,25 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
+        <table *ngIf="uploadedFiles.length" class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Nome do arquivo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let uploadedFile of uploadedFiles">
+              <td class="d-grid gap-2 d-md-flex justify-content-md-end align-items-center">
+                <span class="me-auto">{{uploadedFile.fileName}}.{{uploadedFile.extension}}</span>
+                <button type="button"
+                  (click)="downloadFile(uploadedFile.id)" class="btn btn-sm btn-primary">Download</button>
+                <button type="button" *ngIf="checkUserHavePermission('deleteUploadedFile')" (click)="deleteFile(uploadedFile.id)"
+                  class="btn btn-sm btn-danger">Excluir</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

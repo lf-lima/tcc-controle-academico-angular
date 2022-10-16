@@ -11,12 +11,14 @@
         <tr>
           <th>CPF</th>
           <th>Nome</th>
+          <th>Curso</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let student of students">
           <td>{{student.documentNumber}}</td>
           <td>{{student.name}}</td>
+          <td>{{student.courseName}}</td>
         </tr>
       </tbody>
     </table>

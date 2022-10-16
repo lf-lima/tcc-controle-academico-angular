@@ -10,12 +10,14 @@
       <thead>
         <tr>
           <th>Nome</th>
+          <th>Professor</th>
           <th>Sobre</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let subject of subjects" [routerLink]="['/subjects', subject.id]">
           <td>{{subject.subjectName}}</td>
+          <td>{{subject.professorName}}</td>
           <td>{{subject.subjectDescription}}</td>
         </tr>
       </tbody>

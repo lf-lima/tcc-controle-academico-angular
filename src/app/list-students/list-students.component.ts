@@ -27,10 +27,12 @@ export class ListStudentsComponent implements OnInit {
 
       this.students = students.map(student => {
         const documentNumber = student.user.documentNumber
+        const courseName = student.course.courseName
 
         delete student.user
+        delete student.course
 
-        return { ...student, documentNumber }
+        return { ...student, documentNumber, courseName }
       })
     })
   }

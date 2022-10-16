@@ -22,7 +22,17 @@ export class ListSubjectComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subjectService.getAllSubjects().subscribe((response: any) => { this.subjects = response.body })
+    this.subjectService.getAllSubjects().subscribe((response: any) => {
+      const subjects = response.body as any[]
+
+      this.subjects = subjects.map(subject => {
+        const professorName = subject.professor.name
+
+        delete subject.professor
+
+        return { ...subject, professorName }
+      })
+    })
   }
 
   checkHasPermission (requiredPermission: string): boolean {

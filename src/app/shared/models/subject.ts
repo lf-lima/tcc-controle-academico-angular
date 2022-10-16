@@ -4,4 +4,5 @@ export interface Subject {
   professorId: number
   subjectName: string
   subjectDescription: string
+  professorName?: string
 }

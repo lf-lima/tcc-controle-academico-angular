@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { map, Observable } from 'rxjs'
+import { ChatActive } from 'src/app/shared/models/chatActive'
+import { ChatUser } from 'src/app/shared/models/chatUser'
 import { ChatService } from 'src/app/shared/services/chat.service'
 import { TokenService } from 'src/app/shared/services/token.service'
 
@@ -9,18 +11,8 @@ import { TokenService } from 'src/app/shared/services/token.service'
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
-  usersOnline!: Observable<{ username: string, userId: string }[]>
-
-  chatsActive!: Observable<{
-		chatId: string
-		participants: { username: string, userId: string }[]
-		position: number
-    messages: {
-      userId: string
-      username: string
-      message: string
-    }[]
-	}[]>
+  usersOnline!: Observable<ChatUser[]>
+  chatsActive!: Observable<ChatActive[]>
 
   constructor (
     private tokenService: TokenService,
@@ -32,23 +24,13 @@ export class ChatComponent implements OnInit {
     this.chatsActive = this.chatService.chatsActive
   }
 
-  newChat (user: { username: string, userId: string }): void {
+  newChat (user: { socketId: string, userId: number }): void {
     console.log('novo chat:', user)
 
-    this.chatService.newChat(user.userId, user.username)
+    this.chatService.newChat({ destinySocketId: user.socketId, destinyUserId: user.userId })
   }
 
   sendMessage (chatId: string, message: string): void {
     this.chatService.sendMessage(chatId, message)
   }
-
-  // userEnter () {
-  //   const { username } = this.tokenService.getTokenPayload()
-  //   console.log('enter user', username)
-  //   this.socketService.userEnter(username)
-  // }
-
-  // fetchUsersOnline () {
-  //   this.socketService.fetchUsersOnline().subscribe((response: any) => { this.usersOnline = response })
-  // }
 }

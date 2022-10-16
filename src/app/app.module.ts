@@ -21,7 +21,7 @@ import { environment } from 'src/environments/environment';
 import { ChatComponent } from './chat/chat.component'
 
 const config: SocketIoConfig = {
-	url: environment.socketUrl,
+	url: environment.baseUrl,
 	options: {
 		transports: ['websocket']
 	}

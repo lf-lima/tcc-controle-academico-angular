@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Institution } from 'src/app/shared/models/institution'
+import { TokenPayload } from 'src/app/shared/models/tokenPayload'
 import { InstitutionService } from 'src/app/shared/services/institution.service'
+import { TokenService } from 'src/app/shared/services/token.service'
 
 @Component({
   selector: 'app-list-institutions',
@@ -10,10 +12,14 @@ import { InstitutionService } from 'src/app/shared/services/institution.service'
 export class ListInstitutionsComponent implements OnInit {
 
   institutions!: Institution[]
+  tokenPayload!: TokenPayload
 
   constructor(
-    private institutionService: InstitutionService
-  ) { }
+    private institutionService: InstitutionService,
+    private tokenService: TokenService
+  ) {
+    this.tokenPayload = this.tokenService.getTokenPayload()
+  }
 
   ngOnInit(): void {
     this.institutionService.getAllInstitutions().subscribe((response: any) => {
@@ -27,5 +33,10 @@ export class ListInstitutionsComponent implements OnInit {
         return { ...institution, documentNumber }
       })
     })
+  }
+
+  checkHasPermission (requiredPermission: string): boolean {
+    const { permissions } = this.tokenPayload
+    return !!permissions.find(permission => permission === requiredPermission)
   }
 }

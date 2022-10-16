@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Professor } from 'src/app/shared/models/professor'
+import { TokenPayload } from 'src/app/shared/models/tokenPayload'
 import { ProfessorService } from 'src/app/shared/services/professor.service'
+import { TokenService } from 'src/app/shared/services/token.service'
 
 @Component({
   selector: 'app-list-professors',
@@ -10,10 +12,14 @@ import { ProfessorService } from 'src/app/shared/services/professor.service'
 export class ListProfessorsComponent implements OnInit {
 
   professors!: Professor[]
+  tokenPayload!: TokenPayload
 
   constructor(
-    private professorService: ProfessorService
-  ) { }
+    private professorService: ProfessorService,
+    private tokenService: TokenService
+  ) {
+    this.tokenPayload = this.tokenService.getTokenPayload()
+  }
 
   ngOnInit(): void {
     this.professorService.getAllByInstitutionId().subscribe((response: any) => {
@@ -27,5 +33,10 @@ export class ListProfessorsComponent implements OnInit {
         return { ...professor, documentNumber }
       })
     })
+  }
+
+  checkHasPermission (requiredPermission: string): boolean {
+    const { permissions } = this.tokenPayload
+    return !!permissions.find(permission => permission === requiredPermission)
   }
 }

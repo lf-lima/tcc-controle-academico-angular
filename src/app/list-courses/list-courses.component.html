@@ -1,0 +1,24 @@
+<div class="h-100 d-flex justify-content-center p-4">
+  <div class="w-100">
+    <div class="mt-4 d-grid gap-2 d-md-flex justify-content-md-end align-items-center">
+      <h1 class="me-auto">Cursos</h1>
+
+      <a [routerLink]="['/courses/new']" class="btn btn-danger">Adicionar</a>
+    </div>
+    <hr>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Sobre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of courses">
+          <td>{{course.courseName}}</td>
+          <td>{{course.courseDescription}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

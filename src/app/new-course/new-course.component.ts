@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms'
+import { Router } from '@angular/router'
 import { NewCourseInputDto } from 'src/app/shared/dtos/course/newCourseDto'
 import { CourseService } from 'src/app/shared/services/course.service'
 import { catchErrorFunction } from 'src/app/shared/utils/catchErrorFunction'
@@ -16,7 +17,8 @@ export class NewCourseComponent implements OnInit {
   })
 
   constructor (
-    private courseService: CourseService
+    private courseService: CourseService,
+    private router: Router
   ) { }
 
   ngOnInit (): void {
@@ -28,6 +30,7 @@ export class NewCourseComponent implements OnInit {
         next: (response) => {
           alert('Curso criado com sucesso!')
           this.newCourseForm.reset()
+          this.router.navigate(['/courses'])
         },
         error: catchErrorFunction
       }

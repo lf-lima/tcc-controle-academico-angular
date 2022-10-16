@@ -15,4 +15,7 @@ export class InstitutionService {
       input
     )
   }
+  getAllInstitutions () {
+    return this.httpClient.get(`${environment.baseUrl}/institution`)
+  }
 }

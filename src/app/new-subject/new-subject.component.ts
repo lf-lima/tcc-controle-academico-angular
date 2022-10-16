@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms'
+import { Router } from '@angular/router'
 import { NewSubjectInputDto } from 'src/app/shared/dtos/subject/newSubjectDto'
 import { Course } from 'src/app/shared/models/course'
 import { Professor } from 'src/app/shared/models/professor'
@@ -28,7 +29,8 @@ export class NewSubjectComponent implements OnInit {
   constructor (
     private subjectService: SubjectService,
     private courseService: CourseService,
-    private professorService: ProfessorService
+    private professorService: ProfessorService,
+    private router: Router
   ) { }
 
   ngOnInit (): void {
@@ -46,6 +48,7 @@ export class NewSubjectComponent implements OnInit {
         next: (response) => {
           alert('Matéria criada com sucesso!')
           this.newSubjectForm.reset()
+          this.router.navigate(['/subjects'])
         },
         error: catchErrorFunction
       }

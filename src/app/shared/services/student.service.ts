@@ -15,4 +15,8 @@ export class StudentService {
       input
     )
   }
+
+  getAllByInstitutionId () {
+    return this.httpClient.get(`${environment.baseUrl}/student`)
+  }
 }

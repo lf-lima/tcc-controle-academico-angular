@@ -1,5 +1,31 @@
 <div class="h-100 d-flex justify-content-center p-4">
   <div class="w-100">
+    <div class="mt-4 d-grid gap-2 d-md-flex justify-content-md-end align-items-center">
+      <h1 class="me-auto">Matérias</h1>
+
+      <a [routerLink]="['/subjects/new']" class="btn btn-danger">Adicionar</a>
+    </div>
+    <hr>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Sobre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let subject of subjects" [routerLink]="['/subjects', subject.id]">
+          <td>{{subject.subjectName}}</td>
+          <td>{{subject.subjectDescription}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- <div class="h-100 d-flex justify-content-center p-4">
+  <div class="w-100">
     <h1 class="mt-4 mb-4 border-bottom pb-4">Matérias</h1>
 
     <div *ngFor="let subject of subjects" [routerLink]="['/subject', subject.id]" class="card w-100 mt-4 subject-card">
@@ -8,4 +34,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

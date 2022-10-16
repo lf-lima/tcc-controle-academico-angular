@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
+import { Router } from '@angular/router'
 import { NewInstitutionInputDto } from 'src/app/shared/dtos/institution/newInstitutionDto'
 import { InstitutionService } from 'src/app/shared/services/institution.service'
 import { catchErrorFunction } from 'src/app/shared/utils/catchErrorFunction'
@@ -19,7 +20,8 @@ export class NewInstitutionComponent implements OnInit {
   })
 
   constructor (
-    private institutionService: InstitutionService
+    private institutionService: InstitutionService,
+    private router: Router
   ) { }
 
   ngOnInit (): void {
@@ -31,6 +33,7 @@ export class NewInstitutionComponent implements OnInit {
         next: (response) => {
           alert('Instituição criada com sucesso!')
           this.newInstitutionForm.reset()
+          this.router.navigate(['/institutions'])
         },
         error: catchErrorFunction
       }

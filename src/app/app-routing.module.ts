@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { HomeComponent } from 'src/app/home/home.component'
+import { ListCoursesComponent } from 'src/app/list-courses/list-courses.component'
+import { ListInstitutionsComponent } from 'src/app/list-institutions/list-institutions.component'
+import { ListProfessorsComponent } from 'src/app/list-professors/list-professors.component'
+import { ListStudentsComponent } from 'src/app/list-students/list-students.component'
 import { ListSubjectComponent } from 'src/app/list-subject/list-subject.component'
 import { LoginComponent } from 'src/app/login/login.component'
 import { NewCourseComponent } from 'src/app/new-course/new-course.component'
@@ -27,9 +31,15 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'institution',
+    path: 'institutions',
     canActivate: [AuthGuard],
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        component: ListInstitutionsComponent,
+        canActivate: [AuthGuard]
+      },
       {
         path: 'new',
         component: NewInstitutionComponent,
@@ -38,9 +48,15 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'professor',
+    path: 'professors',
     canActivate: [AuthGuard],
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        component: ListProfessorsComponent,
+        canActivate: [AuthGuard]
+      },
       {
         path: 'new',
         component: NewProfessorComponent,
@@ -49,9 +65,15 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'student',
+    path: 'students',
     canActivate: [AuthGuard],
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        component: ListStudentsComponent,
+        canActivate: [AuthGuard]
+      },
       {
         path: 'new',
         component: NewStudentComponent,
@@ -60,9 +82,15 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'course',
+    path: 'courses',
     canActivate: [AuthGuard],
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        component: ListCoursesComponent,
+        canActivate: [AuthGuard]
+      },
       {
         path: 'new',
         component: NewCourseComponent,
@@ -71,7 +99,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'subject',
+    path: 'subjects',
     canActivate: [AuthGuard],
     children: [
       {

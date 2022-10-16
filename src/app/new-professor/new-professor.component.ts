@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms'
+import { Router } from '@angular/router'
 import { NewProfessorInputDto } from 'src/app/shared/dtos/professor/newProfessorDto'
 import { ProfessorService } from 'src/app/shared/services/professor.service'
 import { catchErrorFunction } from 'src/app/shared/utils/catchErrorFunction'
@@ -19,7 +20,8 @@ export class NewProfessorComponent implements OnInit {
   })
 
   constructor (
-    private professorService: ProfessorService
+    private professorService: ProfessorService,
+    private router: Router
   ) { }
 
   ngOnInit (): void {
@@ -31,6 +33,7 @@ export class NewProfessorComponent implements OnInit {
         next: (response) => {
           alert('Professor criado com sucesso!')
           this.newProfessorForm.reset()
+          this.router.navigate(['/professors'])
         },
         error: catchErrorFunction
       }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { Router } from '@angular/router'
 import { TokenService } from 'src/app/shared/services/token.service'
 
 @Component({
@@ -12,7 +13,14 @@ export class AppComponent {
 
   constructor (
     private tokenService: TokenService,
+    private router: Router
   ) { }
+
+  checkIsLogin () {
+    const url = this.router.url
+
+    return url === '/' || url === '/login'
+  }
 
   checkIfAuthenticated () {
     return !!this.tokenService.getToken()

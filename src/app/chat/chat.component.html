@@ -1,22 +1,49 @@
 <div class="card position-absolute bottom-0 border-top rounded-top" style="width: 18rem;">
   <div class="card-header">
-    Usuários Online
+    <a data-bs-toggle="collapse" href="#users-online" aria-expanded="true" aria-controls="users-online">
+      <b>Usuários Online</b></a>
   </div>
-  <ul class="list-group list-group-flush">
+  <ul class="list-group list-group-flush collapse" id="users-online">
     <li *ngFor="let user of usersOnline | async" class="list-group-item" (click)="newChat(user)">{{user.username}}</li>
   </ul>
 </div>
 
-<div *ngFor="let chatActive of chatsActive | async; index as i" class="card position-absolute bottom-0 border-top"
-  [ngStyle]="{'right.rem': chatActive.position * 20 }" style="width: 18rem;">
+<div *ngFor="let chatActive of chatsActive | async" class="card chat-individual position-absolute bottom-0 border-top"
+  [ngStyle]="{'right.rem': chatActive.position * 21 }" style="width: 18rem;">
   <div class="card-header">
-    <span>{{chatActive.participants[0].username}}<span *ngIf="chatActive.participants.length === 2">, {{chatActive.participants[1].username}}</span></span>
+    <a data-bs-toggle="collapse" href="#{{chatActive.chatId}}" aria-expanded="false"
+      attr.aria-controls="{{chatActive.chatId}}">
+      <b>
+        <span>
+          {{chatActive.participants[0].username}}
+          <span *ngIf="chatActive.participants.length === 2">, {{chatActive.participants[1].username}}</span>
+        </span>
+      </b>
+    </a>
   </div>
-  <p *ngFor="let msgObject of chatActive.messages"><b>{{msgObject.user.username}}:</b> {{msgObject.message}}</p>
-  <div class="card-footer p-0 d-flex flex-row">
-    <input (focus)="chatFocused(chatActive.chatId)" id="{{chatActive.chatId}}" #message style="width: 85%;" type="text" class="form-control m-0">
-    <button (click)="sendMessage(chatActive.chatId, message.value)" style="width: 15%;" type="submit" class="btn btn-primary text-center">
-      <fa-icon [icon]="iconSendMessage"></fa-icon>
-    </button>
+  <div class="body-and-footer collapse" attr.id="{{chatActive.chatId}}">
+    <div style="height: 12rem;max-height: 12rem;overflow-y: auto;" class="card-body">
+      <ng-container *ngFor="let currentMsgObject of chatActive.messages; index as i">
+        <div style="max-width: 85%;"
+          *ngIf="i == 0 || chatActive.messages[i-1].user.userId != currentMsgObject.user.userId"
+          [ngClass]="currentMsgObject.user.userId == currentUser.userId ? 'text-end ms-auto' : 'text-start me-auto'"
+          class="p-0 m-0">
+          <b>{{currentMsgObject.user.username}}</b>
+        </div>
+        <div style="max-width: 85%;"
+          [ngClass]="currentMsgObject.user.userId == currentUser.userId ? 'ms-auto text-end' : 'me-auto'"
+          class="p-0 m-0">
+          {{currentMsgObject.message}}
+        </div>
+      </ng-container>
+    </div>
+    <div class="card-footer p-0 d-flex flex-row">
+      <input (focus)="chatFocused(chatActive.chatId)" id="input-{{chatActive.chatId}}" #message style="width: 85%;"
+        type="text" class="form-control m-0">
+      <button (click)="sendMessage(chatActive.chatId, message.value)" style="width: 15%;"
+        class="btn btn-primary text-center">
+        <fa-icon [icon]="iconSendMessage"></fa-icon>
+      </button>
+    </div>
   </div>
 </div>

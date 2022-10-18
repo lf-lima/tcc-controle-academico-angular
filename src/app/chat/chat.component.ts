@@ -19,10 +19,12 @@ export class ChatComponent implements OnInit {
   usersOnline!: Observable<ChatUser[]>
   chatsActive!: Observable<ChatActive[]>
 
+  currentUser!: { username: string; userId: number }
+
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'Enter') {
-      const inputMessage = document.getElementById(this._chatFocused) as any
+      const inputMessage = document.getElementById(`input-${this._chatFocused}`) as any
       this.sendMessage(this._chatFocused, inputMessage.value)
     }
   }
@@ -35,6 +37,12 @@ export class ChatComponent implements OnInit {
   ngOnInit (): void {
     this.usersOnline = this.chatService.usersOnline
     this.chatsActive = this.chatService.chatsActive
+
+    const { username, userId } = this.tokenService.getTokenPayload()
+    this.currentUser = {
+      username,
+      userId
+    }
   }
 
   newChat (user: { socketId: string, userId: number }): void {

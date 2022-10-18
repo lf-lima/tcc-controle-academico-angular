@@ -11,22 +11,6 @@
         </button>
       </h5>
       <div class="card-body">
-        <!-- <div class="row">
-          <div *ngFor="let uploadedFile of uploadedFiles" class="col-3 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title text-center">{{uploadedFile.fileName}}.{{uploadedFile.extension}}</h5>
-              </div>
-              <div class="card-footer p-0">
-                <button type="button"
-                  [ngClass]="checkUserHavePermission('deleteUploadedFile') ? 'w-50' : 'w-100'"
-                  (click)="downloadFile(uploadedFile.id)" class="btn btn-sm btn-primary">Download</button>
-                <button type="button" *ngIf="checkUserHavePermission('deleteUploadedFile')" (click)="deleteFile(uploadedFile.id)"
-                  class="btn btn-sm btn-danger w-50">Excluir</button>
-              </div>
-            </div>
-          </div>
-        </div> -->
         <table *ngIf="uploadedFiles.length" class="table table-striped table-hover">
           <thead>
             <tr>

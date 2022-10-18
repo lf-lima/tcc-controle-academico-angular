@@ -2,3 +2,19 @@ li:hover {
  opacity: 0.7;
  cursor: pointer;
 }
+
+.card {
+  right: 1.5%;
+  border-radius: 10px 10px 0px 0px;
+}
+
+input {
+  border-radius: 0px;
+}
+
+input:focus {
+}
+
+button {
+  border-radius: 0px;
+}

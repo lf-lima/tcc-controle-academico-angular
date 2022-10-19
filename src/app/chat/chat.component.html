@@ -1,6 +1,6 @@
 <div class="card position-absolute bottom-0 border-top rounded-top" style="width: 18rem;">
   <div class="card-header">
-    <a data-bs-toggle="collapse" href="#users-online" aria-expanded="true" aria-controls="users-online">
+    <a class="text-decoration-none text-primary" data-bs-toggle="collapse" href="#users-online" aria-expanded="true" aria-controls="users-online">
       <b>Usuários Online</b></a>
   </div>
   <ul class="list-group list-group-flush collapse" id="users-online">
@@ -11,7 +11,7 @@
 <div *ngFor="let chatActive of chatsActive | async" class="card chat-individual position-absolute bottom-0 border-top"
   [ngStyle]="{'right.rem': chatActive.position * 21 }" style="width: 18rem;">
   <div class="card-header">
-    <a data-bs-toggle="collapse" href="#{{chatActive.chatId}}" aria-expanded="false"
+    <a class="text-decoration-none text-primary" data-bs-toggle="collapse" attr.href="#chat-{{chatActive.chatId}}" aria-expanded="false"
       attr.aria-controls="{{chatActive.chatId}}">
       <b>
         <span>
@@ -21,7 +21,7 @@
       </b>
     </a>
   </div>
-  <div class="body-and-footer collapse" attr.id="{{chatActive.chatId}}">
+  <div class="body-and-footer collapse show" attr.id="chat-{{chatActive.chatId}}">
     <div style="height: 12rem;max-height: 12rem;overflow-y: auto;" class="card-body">
       <ng-container *ngFor="let currentMsgObject of chatActive.messages; index as i">
         <div style="max-width: 85%;"
@@ -40,10 +40,10 @@
     <div class="card-footer p-0 d-flex flex-row">
       <input (focus)="chatFocused(chatActive.chatId)" id="input-{{chatActive.chatId}}" #message style="width: 85%;"
         type="text" class="form-control m-0">
-      <button (click)="sendMessage(chatActive.chatId, message.value)" style="width: 15%;"
+      <a (click)="sendMessage(chatActive.chatId, message.value)" style="width: 15%;"
         class="btn btn-primary text-center">
         <fa-icon [icon]="iconSendMessage"></fa-icon>
-      </button>
+      </a>
     </div>
   </div>
 </div>

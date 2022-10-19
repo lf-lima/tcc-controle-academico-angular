@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core'
+import { Component, HostListener, OnInit, Renderer2 } from '@angular/core'
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 import { Observable } from 'rxjs'
 import { ChatActive } from 'src/app/shared/models/chatActive'
@@ -23,6 +23,8 @@ export class ChatComponent implements OnInit {
 
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
+    const inputMessage = this.renderer.selectRootElement(`#input-${this._chatFocused}`)
+    inputMessage.focus()
     if (event.key === 'Enter') {
       const inputMessage = document.getElementById(`input-${this._chatFocused}`) as any
       this.sendMessage(this._chatFocused, inputMessage.value)
@@ -31,7 +33,8 @@ export class ChatComponent implements OnInit {
 
   constructor (
     private tokenService: TokenService,
-    private chatService: ChatService
+    private chatService: ChatService,
+    private renderer: Renderer2
   ) { }
 
   ngOnInit (): void {

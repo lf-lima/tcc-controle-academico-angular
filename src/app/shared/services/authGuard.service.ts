@@ -17,8 +17,8 @@ export class AuthGuard implements CanActivate {
     const token = this.tokenService.getToken()
 
     if (token) {
-      const { username, userId } = this.tokenService.getTokenPayload()
-      this.chatService.login(username, userId)
+      const { username, userId, institutionId } = this.tokenService.getTokenPayload()
+      this.chatService.login(username, userId, institutionId)
 
       return true
     } else {

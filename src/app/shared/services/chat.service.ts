@@ -14,8 +14,9 @@ export class ChatService {
 	usersOnline = this.socket.fromEvent<ChatUser[]>('users online')
 	chatsActive = this.socket.fromEvent<ChatActive[]>('chats active')
 
-	login (username: string, userId: number) {
-		this.socket.emit('login', { username, userId })
+	login (username: string, userId: number, institutionId: number) {
+		console.log(institutionId)
+		this.socket.emit('login', { username, userId, institutionId })
 	}
 
 	logout () {
@@ -24,6 +25,10 @@ export class ChatService {
 
 	newChat (destinyUser: { destinySocketId: string, destinyUserId: number }) {
 		this.socket.emit('new chat', destinyUser)
+	}
+
+	closeChat (chatId: string) {
+		this.socket.emit('close chat', { chatId })
 	}
 
 	sendMessage (chatId: string, message: string) {

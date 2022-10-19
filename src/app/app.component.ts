@@ -9,7 +9,6 @@ import { TokenService } from 'src/app/shared/services/token.service'
 })
 export class AppComponent {
   title = 'tcc-controle-academico-angular'
-  usersOnline: Array<{ username: string, socketId: string }> = [{ username: 'User Example', socketId: '123' }]
 
   constructor (
     private tokenService: TokenService,

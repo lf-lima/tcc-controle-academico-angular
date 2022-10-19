@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router'
+import { TokenPayload } from 'src/app/shared/models/tokenPayload'
 import { AuthService } from 'src/app/shared/services/auth.service'
 import { TokenService } from 'src/app/shared/services/token.service'
 import { catchErrorFunction } from 'src/app/shared/utils/catchErrorFunction'
@@ -27,7 +28,6 @@ export class LoginComponent implements OnInit {
     this.checkIfAuthenticated()
   }
 
-
   checkIfAuthenticated () {
     const token = this.tokenService.getToken()
 
@@ -40,10 +40,23 @@ export class LoginComponent implements OnInit {
     const { documentNumber, password } = this.loginForm.value
     this.authService.authenticate(documentNumber!, password!).subscribe({
       next: (res) => {
-        this.router.navigate(['/home'])
+        this.redirectToRespectiveRoute()
       },
       error: catchErrorFunction
     })
+  }
 
+  redirectToRespectiveRoute () {
+    const tokenPayload = this.tokenService.getTokenPayload()
+
+    if (tokenPayload.studentId) {
+      this.router.navigate(['/subjects'])
+    } else if (tokenPayload.professorId) {
+      this.router.navigate(['/subjects'])
+    } else if (tokenPayload.institutionId) {
+      this.router.navigate(['/courses'])
+    } else {
+      this.router.navigate(['/institutions'])
+    }
   }
 }

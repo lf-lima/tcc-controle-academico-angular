@@ -10,7 +10,7 @@
 
 <div *ngFor="let chatActive of chatsActive | async" class="card chat-individual position-absolute bottom-0 border-top"
   [ngStyle]="{'right.rem': chatActive.position * 21 }" style="width: 18rem;">
-  <div class="card-header">
+  <div class="card-header d-flex justify-content-between">
     <a class="text-decoration-none text-primary" data-bs-toggle="collapse" attr.href="#chat-{{chatActive.chatId}}" aria-expanded="false"
       attr.aria-controls="{{chatActive.chatId}}">
       <b>
@@ -20,9 +20,10 @@
         </span>
       </b>
     </a>
+    <button type="button" class="btn-close" (click)="closeChat(chatActive.chatId)" aria-label="Close"></button>
   </div>
   <div class="body-and-footer collapse show" attr.id="chat-{{chatActive.chatId}}">
-    <div style="height: 12rem;max-height: 12rem;overflow-y: auto;" class="card-body">
+    <div style="height: 12rem;max-height: 12rem;overflow-y: scroll;" attr.id="chat-body-{{chatActive.chatId}}" class="card-body">
       <ng-container *ngFor="let currentMsgObject of chatActive.messages; index as i">
         <div style="max-width: 85%;"
           *ngIf="i == 0 || chatActive.messages[i-1].user.userId != currentMsgObject.user.userId"

@@ -22,12 +22,14 @@ export class ChatComponent implements OnInit {
   currentUser!: { username: string; userId: number }
 
   @HostListener('document:keypress', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
-    const inputMessage = this.renderer.selectRootElement(`#input-${this._chatFocused}`)
-    inputMessage.focus()
-    if (event.key === 'Enter') {
-      const inputMessage = document.getElementById(`input-${this._chatFocused}`) as any
-      this.sendMessage(this._chatFocused, inputMessage.value)
+  handleKeyboardEvent (event: KeyboardEvent) {
+    const inputMessage = document.getElementById(`input-${this._chatFocused}`) as any
+    if (inputMessage) {
+      inputMessage.focus()
+
+      if (event.key === 'Enter') {
+        this.sendMessage(this._chatFocused, inputMessage.value)
+      }
     }
   }
 
@@ -52,8 +54,14 @@ export class ChatComponent implements OnInit {
     this.chatService.newChat({ destinySocketId: user.socketId, destinyUserId: user.userId })
   }
 
+  closeChat (chatId: string) {
+    this.chatService.closeChat(chatId)
+  }
+
   sendMessage (chatId: string, message: string): void {
-    this.chatService.sendMessage(chatId, message)
+    if (message) {
+      this.chatService.sendMessage(chatId, message)
+    }
   }
 
   chatFocused (chatId: string) {

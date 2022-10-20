@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { RequestInterceptorService } from 'src/app/shared/services/requestInterceptor.service'
+import { NgxMaskModule} from 'ngx-mask'
 
 @NgModule({
   declarations: [],
@@ -12,12 +13,14 @@ import { RequestInterceptorService } from 'src/app/shared/services/requestInterc
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxMaskModule.forRoot()
   ],
   exports: [
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxMaskModule
   ],
   providers: [
     {

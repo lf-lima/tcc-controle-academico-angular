@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, Renderer2 } from '@angular/core'
+import { AfterViewInit, Component, HostListener, OnInit, Renderer2 } from '@angular/core'
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 import { Observable } from 'rxjs'
 import { ChatActive } from 'src/app/shared/models/chatActive'
@@ -61,6 +61,14 @@ export class ChatComponent implements OnInit {
   sendMessage (chatId: string, message: string): void {
     if (message) {
       this.chatService.sendMessage(chatId, message)
+    }
+  }
+
+  scrollBody (chatId: string) {
+    const chatBody = document.getElementById(`chat-body-${chatId}`)
+
+    if (chatBody) {
+      chatBody.scrollTop = chatBody.scrollHeight
     }
   }
 

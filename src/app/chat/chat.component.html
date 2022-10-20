@@ -37,6 +37,7 @@
           {{currentMsgObject.message}}
         </div>
       </ng-container>
+      {{scrollBody(chatActive.chatId)}}
     </div>
     <div class="card-footer p-0 d-flex flex-row">
       <input (focus)="chatFocused(chatActive.chatId)" id="input-{{chatActive.chatId}}" #message style="width: 85%;"

@@ -15,7 +15,6 @@ export class ChatService {
 	chatsActive = this.socket.fromEvent<ChatActive[]>('chats active')
 
 	login (username: string, userId: number, institutionId: number) {
-		console.log(institutionId)
 		this.socket.emit('login', { username, userId, institutionId })
 	}
 

@@ -1,10 +1,14 @@
 <div class="card position-absolute bottom-0 border-top rounded-top" style="width: 18rem;">
-  <div class="card-header">
+  <div class="card-header d-flex align-items-center">
     <a class="text-decoration-none text-primary" data-bs-toggle="collapse" href="#users-online" aria-expanded="true" aria-controls="users-online">
+      <fa-icon [icon]="iconUsers" class="me-2"></fa-icon>
       <b>Usuários Online</b></a>
   </div>
   <ul class="list-group list-group-flush collapse" id="users-online">
-    <li *ngFor="let user of usersOnline | async" class="list-group-item" (click)="newChat(user)">{{user.username}}</li>
+    <li *ngFor="let user of usersOnline | async" class="list-group-item d-flex align-items-center" (click)="newChat(user)">
+      <fa-icon [icon]="iconUser" class="me-2"></fa-icon>
+      <span>{{user.username}}</span>
+    </li>
   </ul>
 </div>
 

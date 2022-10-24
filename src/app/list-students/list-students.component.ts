@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { Student } from 'src/app/shared/models/student'
 import { TokenPayload } from 'src/app/shared/models/tokenPayload'
 import { StudentService } from 'src/app/shared/services/student.service'
@@ -10,6 +11,8 @@ import { TokenService } from 'src/app/shared/services/token.service'
   styleUrls: ['./list-students.component.scss']
 })
 export class ListStudentsComponent implements OnInit {
+
+  iconPlus = faPlus
 
   students!: Student[]
   tokenPayload!: TokenPayload

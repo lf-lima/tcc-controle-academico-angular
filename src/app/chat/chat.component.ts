@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, HostListener, OnInit, Renderer2 } from '@angular/core'
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import { faPaperPlane, faUser, faUsers } from '@fortawesome/free-solid-svg-icons'
 import { Observable } from 'rxjs'
 import { ChatActive } from 'src/app/shared/models/chatActive'
 import { ChatUser } from 'src/app/shared/models/chatUser'
@@ -14,6 +14,9 @@ import { TokenService } from 'src/app/shared/services/token.service'
 export class ChatComponent implements OnInit {
 
   iconSendMessage = faPaperPlane
+  iconUsers = faUsers
+  iconUser = faUser
+
   _chatFocused!: string
 
   usersOnline!: Observable<ChatUser[]>

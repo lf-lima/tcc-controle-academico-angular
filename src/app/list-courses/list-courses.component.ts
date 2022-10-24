@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { Course } from 'src/app/shared/models/course'
 import { TokenPayload } from 'src/app/shared/models/tokenPayload'
 import { CourseService } from 'src/app/shared/services/course.service'
@@ -10,6 +11,8 @@ import { TokenService } from 'src/app/shared/services/token.service'
   styleUrls: ['./list-courses.component.scss']
 })
 export class ListCoursesComponent implements OnInit {
+
+  iconPlus = faPlus
 
   courses!: Course[]
   tokenPayload!: TokenPayload

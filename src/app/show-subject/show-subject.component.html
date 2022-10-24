@@ -7,7 +7,7 @@
 
         <button *ngIf="checkUserHavePermission('uploadFileToSubject')" type="button" class="btn btn-sm btn-primary"
           data-bs-toggle="modal" data-bs-target="#uploadModal">
-          Novo arquivo
+          <fa-icon [icon]="iconPlus"></fa-icon>
         </button>
       </h5>
       <div class="card-body">
@@ -22,9 +22,13 @@
               <td class="d-grid gap-2 d-md-flex justify-content-md-end align-items-center">
                 <span class="me-auto">{{uploadedFile.fileName}}.{{uploadedFile.extension}}</span>
                 <button type="button"
-                  (click)="downloadFile(uploadedFile.id)" class="btn btn-sm btn-primary">Download</button>
+                  (click)="downloadFile(uploadedFile.id)" class="btn btn-sm btn-primary">
+                  <fa-icon [icon]="iconDownload"></fa-icon>
+                </button>
                 <button type="button" *ngIf="checkUserHavePermission('deleteUploadedFile')" (click)="deleteFile(uploadedFile.id)"
-                  class="btn btn-sm btn-danger">Excluir</button>
+                  class="btn btn-sm btn-danger">
+                  <fa-icon [icon]="iconTrash"></fa-icon>
+                </button>
               </td>
             </tr>
           </tbody>

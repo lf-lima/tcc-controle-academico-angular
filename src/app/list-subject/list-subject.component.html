@@ -3,7 +3,9 @@
     <div class="mt-4 d-grid gap-2 d-md-flex justify-content-md-end align-items-center">
       <h1 class="me-auto">Matérias</h1>
 
-      <a *ngIf="checkHasPermission('createCourse')" [routerLink]="['/subjects/new']" class="btn btn-primary">Adicionar</a>
+      <a *ngIf="checkHasPermission('createCourse')" [routerLink]="['/subjects/new']" class="btn btn-primary">
+        <fa-icon [icon]="iconPlus"></fa-icon>
+      </a>
     </div>
     <hr>
     <table class="table table-striped table-hover">

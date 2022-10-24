@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
+import { faDownload, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Subject } from 'src/app/shared/models/subject'
 import { UploadedFile } from 'src/app/shared/models/uploadedFile'
 import { SubjectService } from 'src/app/shared/services/subject.service'
@@ -11,6 +12,10 @@ import { TokenService } from 'src/app/shared/services/token.service'
   styleUrls: ['./show-subject.component.scss']
 })
 export class ShowSubjectComponent implements OnInit {
+
+  iconPlus = faPlus
+  iconDownload = faDownload
+  iconTrash = faTrash
 
   subject: Subject = {
     subjectName: '',

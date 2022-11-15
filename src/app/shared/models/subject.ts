@@ -5,4 +5,5 @@ export interface Subject {
   subjectName: string
   subjectDescription: string
   professorName?: string
+  courseName?: string
 }

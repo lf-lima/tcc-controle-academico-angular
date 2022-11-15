@@ -30,10 +30,12 @@ export class ListSubjectComponent implements OnInit {
 
       this.subjects = subjects.map(subject => {
         const professorName = subject.professor.name
+        const courseName = subject.course.courseName
 
         delete subject.professor
+        delete subject.course
 
-        return { ...subject, professorName }
+        return { ...subject, professorName, courseName }
       })
     })
   }

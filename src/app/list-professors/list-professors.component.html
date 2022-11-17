@@ -17,7 +17,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let professor of professors">
-          <td>{{professor.documentNumber}}</td>
+          <td>{{professor.documentNumber | mask: '000.000.000-00'}}</td>
           <td>{{professor.name}}</td>
         </tr>
       </tbody>
